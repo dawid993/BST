@@ -130,4 +130,30 @@ public class Tree
 		}
 	}
 	
+	public void iterationInsert(int insertNodeKey)
+	{
+		Node element = root;
+		Node beforeElement = null;
+		
+		while(element != null)
+		{
+			beforeElement = element;
+			if(element.getKey() < insertNodeKey)
+				element = element.getRight();
+			else 
+				element = element.getLeft();
+		}
+		
+		if(beforeElement == null)
+			root = createNode(insertNodeKey,null);
+		else
+		{
+			if(beforeElement.getKey() < insertNodeKey)
+				beforeElement.setRight(createNode(insertNodeKey,beforeElement));
+			else
+				beforeElement.setLeft(createNode(insertNodeKey,beforeElement));
+				
+		}
+	}
+	
 }
